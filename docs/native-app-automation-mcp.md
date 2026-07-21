@@ -258,7 +258,7 @@ Screenshots and page-source dumps embedded in tool responses can be large and ex
 
 ### 404: Unable to find test details
 
-**Symptom:** The Automation tool returns `Error fetching automation test details: Unable to find test details (Status: 404)` for a TestID you know is valid.
+**Symptom:** The Automation tool returns an error containing `Unable to find test details` with a 404 status for a TestID you know is valid. The exact wrapper text varies by client, for example `Error fetching automation test details: Unable to find test details (Status: 404)`.
 
 **Cause:** The request is being routed to the web test-detail endpoint, but the TestID belongs to a **mobile app** test, which lives behind a different endpoint.
 
