@@ -279,7 +279,7 @@ This sits between Ignore Region, which drops the area from validation completely
 
 > **Note:** The Layout Region option is available for web captures and PDF comparisons. It is not offered for real device tests, app SDK tests, Storybook projects, Figma projects, or single image uploads through the API.
 
-> **Important:** On **web** comparisons this works only when the DOM was recorded at capture time. SmartUI CLI and SDK captures record it automatically. Captures taken inside an automation session need DOM recording enabled for your organization, and builds made from an uploaded image never carry a DOM. When it is missing the region quietly behaves like an Ignore Region. See [DOM Recording Requirement](/support/docs/smartui-layout-regions/#dom-recording-requirement-for-web-comparisons). PDF comparisons are not affected.
+> **Important:** Structural analysis runs only on the test types where the page structure is stored with the capture, which today are **CLI** builds generated with the `exec` command, **Webhooks** builds, and **PDF** comparisons. On anything else the region quietly behaves like an Ignore Region instead. See [Supported Test Types](/support/docs/smartui-layout-regions/#supported-test-types).
 
 **Example**
 
@@ -530,7 +530,7 @@ Follow these best practices to get the most out of the annotation tool:
 
 **Solutions:**
 - This is expected for content only changes. A layout region reports elements that were added, removed, or moved, not text or value changes
-- On a web comparison, confirm the DOM was recorded for the build. Without it the region can only behave like an ignore region. See [DOM Recording Requirement](/support/docs/smartui-layout-regions/#dom-recording-requirement-for-web-comparisons)
+- Confirm the test type supports structural analysis. It runs on CLI `exec` builds, Webhooks builds, and PDF comparisons. On anything else the region can only behave like an ignore region. See [Supported Test Types](/support/docs/smartui-layout-regions/#supported-test-types)
 - Verify the region covers the elements you expect. An element belongs to the region when its center falls inside the box
 - Reduce very large regions. A region drawn over an element heavy page falls back to plain ignore behavior
 - See [Layout Regions](/support/docs/smartui-layout-regions/) for the full behavior and limitations

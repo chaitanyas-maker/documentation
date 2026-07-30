@@ -88,9 +88,7 @@ This gives you a middle ground that the existing options do not cover:
 ### Prerequisites
 
 :::info
-For **web** comparisons, a Layout Region works only when the DOM was recorded at capture time. SmartUI compares the recorded structure of the two captures, so a build that carries a screenshot image alone has nothing to analyze. See [DOM Recording Requirement](#dom-recording-requirement-for-web-comparisons) for which capture flows record it.
-
-**PDF** comparisons are not affected. They read the structure out of the document itself, so no DOM is involved.
+Layout Regions are supported on **CLI** builds generated with the `exec` command, on **Webhooks** builds, and on **PDF** comparisons. These are the test types where the page structure is stored alongside the capture. A build that carries a screenshot image alone has nothing to analyze. See [Supported Test Types](#supported-test-types).
 :::
 
 **Step 1:** Open a screenshot comparison in your SmartUI project and click the **Actions** button (annotation icon) to open the annotation tool.
@@ -114,7 +112,7 @@ SmartUI does not read pixels inside a Layout Region. It compares a structural de
 <Tabs className='docs__val' groupId='layout-region-mode'>
 <TabItem value='web' label='Web comparisons' default>
 
-For web captures, SmartUI uses the DOM element data recorded alongside each screenshot. This requires the capture flow to have recorded the DOM, as described in [DOM Recording Requirement](#dom-recording-requirement-for-web-comparisons).
+For web captures, SmartUI uses the DOM element data stored alongside each screenshot. This is available on CLI `exec` builds and on Webhooks builds, as described in [Supported Test Types](#supported-test-types).
 
 1. Elements whose center point falls inside the region are collected from the baseline capture and from the comparison capture.
 2. Each pair is scored on DOM path, classes, applied styles, element id, size, and tag name. Pairs above the match threshold are treated as the same element and are not reported.
@@ -139,27 +137,27 @@ A value that changes inside an otherwise matching cell is not reported, which is
 </TabItem>
 </Tabs>
 
-## DOM Recording Requirement for Web Comparisons
+## Supported Test Types
 
-The structural analysis behind a web Layout Region reads the DOM that was recorded alongside each screenshot. That recording happens at capture time, not at comparison time, so it cannot be added to a build after the fact. If a build was captured without it, drawing a Layout Region on that build gives you plain ignore behavior instead of structural analysis.
+A Layout Region needs the page structure to have been stored alongside the capture. That happens at capture time, not at comparison time, so it cannot be added to a build after the fact.
 
-| Capture flow | DOM recorded | Layout Region behavior |
+Layout Regions are supported on the following test types, which are the ones where the structural data is stored today:
+
+| Test type | Structural data stored | Layout Region behavior |
 | --- | --- | --- |
-| SmartUI CLI and SDK web captures | Yes, on every snapshot | Full structural analysis |
-| SmartUI in test automation, using Lambda Hooks or full page automation captures | Only when DOM recording is enabled for your organization | Structural analysis once enabled, plain ignore until then |
-| Screenshot API uploads and static image uploads | No | Plain ignore |
-| Real device web and app captures | No | Option not offered |
-| PDF comparisons | Not applicable | Full structural analysis from the document |
+| **CLI**, using the `exec` command | Yes, the DOM is stored with each capture | Full structural analysis |
+| **Webhooks** | Yes, the DOM is stored with each capture | Full structural analysis |
+| **PDF** | Not applicable, the structure is read from the document itself | Full structural analysis |
 
-DOM recording is on by default for SmartUI CLI and SDK web captures, because those flows capture the page structure and render it on the TestMu AI cloud. It is **not** on by default for captures taken inside an automation session. If you are running SmartUI through Lambda Hooks or through your automation suite and want Layout Regions to analyze structure, contact [support](mailto:support@testmuai.com) to have DOM recording enabled for your organization.
+On any other test type there is no stored DOM to compare, so a Layout Region cannot analyze structure. This includes builds created from an uploaded image, and captures taken on real devices.
 
 :::warning
-When the DOM was not recorded, the region does not fail or error. It quietly behaves like an [Ignore Region](/support/docs/smartui-draw-on-ui/), which means the area stops being validated at all. If you drew a Layout Region and it never reports anything, check the capture flow first.
+When the structural data is not available, the region does not fail or error. It quietly behaves like an [Ignore Region](/support/docs/smartui-draw-on-ui/), which means the area stops being validated at all. If you drew a Layout Region and it never reports anything, check the test type first.
 :::
 
 ## Where the Option Is Available
 
-The **Layout Region** option appears in the region dropdown for web captures and PDF comparisons. It is not offered for:
+The **Layout Region** option is hidden in the region dropdown for the test types where it cannot work at all. It is not offered for:
 
 - Real device web and app tests
 - Espresso and XCUI tests
@@ -170,11 +168,15 @@ The **Layout Region** option appears in the region dropdown for web captures and
 
 For these test types the dropdown shows the Ignore, Select, Floating, and Ignore Colors options only.
 
+:::note
+The dropdown being available is not on its own a guarantee that structural analysis will run. Use the [Supported Test Types](#supported-test-types) table above as the reference for where a Layout Region does real work.
+:::
+
 ## Behavior Notes and Limitations
 
 - **Content changes are not reported inside the region.** If you need value changes flagged, a Layout Region is the wrong tool for that area. Use the normal comparison, or scope it with a [Select Region](/support/docs/smartui-draw-on-ui/).
 - **Select and Ignore regions win.** If a Layout Region overlaps an Ignore Region, the ignored area stays ignored. If Select Regions are in use, anything outside them is still excluded.
-- **The DOM has to have been recorded for both captures.** A web Layout Region cannot analyze a build that carries only a screenshot image. See [DOM Recording Requirement](#dom-recording-requirement-for-web-comparisons). If the recorded data is missing or cannot be read, the region falls back to behaving like a plain Ignore Region and the comparison still completes. Nothing fails.
+- **The structural data has to exist for both captures.** A web Layout Region cannot analyze a build that carries only a screenshot image. See [Supported Test Types](#supported-test-types). If the stored data is missing or cannot be read, the region falls back to behaving like a plain Ignore Region and the comparison still completes. Nothing fails.
 - **Very dense regions fall back too.** A region drawn over an extremely large number of elements is skipped rather than analyzed, and behaves like an Ignore Region for that build. Draw the region around the section you care about rather than the whole page.
 - **Highlights count towards the mismatch percentage.** Structural differences found inside a Layout Region are treated as differences in the build result, the same as any other highlighted change.
 - **Region scope works as it does everywhere else.** A Layout Region belongs to the screenshot variant you drew it on until you choose [Apply to all variants](/support/docs/smartui-draw-on-ui/#applying-annotations).
@@ -209,9 +211,8 @@ For these test types the dropdown shows the Ignore, Select, Floating, and Ignore
 **Issue:** The region suppresses everything and never reports a structural change.
 
 **Solutions:**
-- Check the capture flow first. On a web comparison the region falls back to ignore behavior whenever the DOM was not recorded for the build. See [DOM Recording Requirement](#dom-recording-requirement-for-web-comparisons)
-- If the build came from an automation session, DOM recording may not be enabled for your organization yet. Contact [support](mailto:support@testmuai.com) to have it enabled, then re-run the build
-- Builds created from an uploaded image never carry a DOM, so a Layout Region on them can only behave like an Ignore Region
+- Check the test type first. Structural analysis runs on CLI `exec` builds, Webhooks builds, and PDF comparisons. See [Supported Test Types](#supported-test-types)
+- Builds created from an uploaded image carry no stored DOM, so a Layout Region on them can only behave like an Ignore Region
 - Reduce the size of the region. Very large regions over element heavy pages are skipped and fall back to ignore behavior
 - For PDF comparisons, confirm you are annotating the page that actually contains the section
 
