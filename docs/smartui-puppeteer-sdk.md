@@ -252,7 +252,7 @@ let options = {
             }
         }
         await page.goto('Required URL');
-        await smartuiSnapshot.smartuiSnapshot(page, "Screenshot Name", options);
+        await smartuiSnapshot(page, "Screenshot Name", options);
 ```
 
 </TabItem>
@@ -265,7 +265,7 @@ let options = {
             }
         }
         await page.goto('Required URL');
-        await smartuiSnapshot.smartuiSnapshot(page, "Screenshot Name", options);
+        await smartuiSnapshot(page, "Screenshot Name", options);
 ```
 
 </TabItem>
@@ -278,7 +278,7 @@ let options = {
             }
         }
         await page.goto('Required URL');
-        await smartuiSnapshot.smartuiSnapshot(page, "Screenshot Name", options);
+        await smartuiSnapshot(page, "Screenshot Name", options);
 ```
 
 </TabItem>
@@ -292,7 +292,7 @@ let options = {
             }
         }
         await page.goto('Required URL');
-        await smartuiSnapshot.smartuiSnapshot(page, "Screenshot Name", options);
+        await smartuiSnapshot(page, "Screenshot Name", options);
 ```
 </TabItem>
 
@@ -308,7 +308,7 @@ let options = {
             }
         }
         await page.goto('Required URL');
-        await smartuiSnapshot.smartuiSnapshot(page, "Screenshot Name", options);
+        await smartuiSnapshot(page, "Screenshot Name", options);
 ```
 
 </TabItem>
@@ -321,7 +321,7 @@ let options = {
             }
         }
         await page.goto('Required URL');
-        await smartuiSnapshot.smartuiSnapshot(page, "Screenshot Name", options);
+        await smartuiSnapshot(page, "Screenshot Name", options);
 ```
 
 </TabItem>
@@ -334,7 +334,7 @@ let options = {
             }
         }
         await page.goto('Required URL');
-        await smartuiSnapshot.smartuiSnapshot(page, "Screenshot Name", options);
+        await smartuiSnapshot(page, "Screenshot Name", options);
 ```
 
 </TabItem>
@@ -348,7 +348,7 @@ let options = {
             }
         }
         await page.goto('Required URL');
-        await smartuiSnapshot.smartuiSnapshot(page, "Screenshot Name", options);
+        await smartuiSnapshot(page, "Screenshot Name", options);
 ```
 </TabItem>
 
@@ -368,7 +368,7 @@ let options = {
       }
   };
         await page.goto('Required URL');
-        await smartuiSnapshot.smartuiSnapshot(page, "Screenshot Name", options);
+        await smartuiSnapshot(page, "Screenshot Name", options);
 ```
 
 </TabItem>
@@ -381,7 +381,7 @@ let options = {
       }
   };
         await page.goto('Required URL');
-        await smartuiSnapshot.smartuiSnapshot(page, "Screenshot Name", options);
+        await smartuiSnapshot(page, "Screenshot Name", options);
 ```
 
 </TabItem>
@@ -394,7 +394,7 @@ let options = {
       }
   };
         await page.goto('Required URL');
-        await smartuiSnapshot.smartuiSnapshot(page, "Screenshot Name", options);
+        await smartuiSnapshot(page, "Screenshot Name", options);
 ```
 
 </TabItem>
@@ -408,7 +408,7 @@ let options = {
       }
   };
         await page.goto('Required URL');
-        await smartuiSnapshot.smartuiSnapshot(page, "Screenshot Name", options);
+        await smartuiSnapshot(page, "Screenshot Name", options);
 ```
 </TabItem>
 
