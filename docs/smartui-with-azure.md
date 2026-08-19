@@ -105,7 +105,17 @@ jobs:
       npx smartui config:create smartui-web.json
       npx smartui --config smartui-web.json exec -- mvn --quiet test -D suite=sdk-cloud.xml
     displayName: 'Execute SmartUI Tests'
+    env:
+      LT_USERNAME: $(LT_USERNAME)
+      LT_ACCESS_KEY: $(LT_ACCESS_KEY)
+      PROJECT_TOKEN: $(PROJECT_TOKEN)
 ```
+
+:::caution `PROJECT_TOKEN` is required
+Without `PROJECT_TOKEN` (or `PROJECT_NAME`) the SmartUI CLI logs `Empty PROJECT_TOKEN and PROJECT_NAME. Skipping authentication`, skips build creation, and **exits 0**. The pipeline reports success while uploading nothing. Add `PROJECT_TOKEN` as a secret pipeline variable and map it into the step with `env:` as shown above. Secret variables are not exposed to scripts automatically, so mapping them per step is required rather than optional.
+
+You can use `PROJECT_NAME` instead of `PROJECT_TOKEN`; SmartUI creates the project if it does not already exist.
+:::
 
 ### Step 5: Check the output
 
