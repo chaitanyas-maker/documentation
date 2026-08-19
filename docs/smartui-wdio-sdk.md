@@ -245,7 +245,7 @@ let options = {
             }
         }
         await browser.url('Required URL');
-        await smartuiSnapshot(driver, 'Screenshot Name', options);
+        await smartuiSnapshot(browser, 'Screenshot Name', options);
 ```
 
 </TabItem>
@@ -258,7 +258,7 @@ let options = {
             }
         }
         await browser.url('Required URL');
-        await smartuiSnapshot(driver, 'Screenshot Name', options);
+        await smartuiSnapshot(browser, 'Screenshot Name', options);
 ```
 
 </TabItem>
@@ -271,7 +271,7 @@ let options = {
             }
         }
         await browser.url('Required URL');
-        await smartuiSnapshot(driver, 'Screenshot Name', options);
+        await smartuiSnapshot(browser, 'Screenshot Name', options);
 ```
 
 </TabItem>
@@ -285,7 +285,7 @@ let options = {
             }
         }
         await browser.url('Required URL');
-        await smartuiSnapshot(driver, 'Screenshot Name', options);
+        await smartuiSnapshot(browser, 'Screenshot Name', options);
 ```
 </TabItem>
 
@@ -301,7 +301,7 @@ let options = {
             }
         }
         await browser.url('Required URL');
-        await smartuiSnapshot(driver, 'Screenshot Name', options);
+        await smartuiSnapshot(browser, 'Screenshot Name', options);
 ```
 
 </TabItem>
@@ -314,7 +314,7 @@ let options = {
             }
         }
         await browser.url('Required URL');
-        await smartuiSnapshot(driver, 'Screenshot Name', options);
+        await smartuiSnapshot(browser, 'Screenshot Name', options);
 ```
 
 </TabItem>
@@ -327,7 +327,7 @@ let options = {
             }
         }
         await browser.url('Required URL');
-        await smartuiSnapshot(driver, 'Screenshot Name', options);
+        await smartuiSnapshot(browser, 'Screenshot Name', options);
 ```
 
 </TabItem>
@@ -341,7 +341,7 @@ let options = {
             }
         }
         await browser.url('Required URL');
-        await smartuiSnapshot(driver, 'Screenshot Name', options);
+        await smartuiSnapshot(browser, 'Screenshot Name', options);
 ```
 </TabItem>
 
@@ -361,7 +361,7 @@ let options = {
       }
   };
         await browser.url('Required URL');
-        await smartuiSnapshot(driver, 'Screenshot Name', options);
+        await smartuiSnapshot(browser, 'Screenshot Name', options);
 ```
 
 </TabItem>
@@ -374,7 +374,7 @@ let options = {
       }
   };
         await browser.url('Required URL');
-        await smartuiSnapshot(driver, 'Screenshot Name', options);
+        await smartuiSnapshot(browser, 'Screenshot Name', options);
 ```
 
 </TabItem>
@@ -387,7 +387,7 @@ let options = {
       }
   };
         await browser.url('Required URL');
-        await smartuiSnapshot(driver, 'Screenshot Name', options);
+        await smartuiSnapshot(browser, 'Screenshot Name', options);
 ```
 
 </TabItem>
@@ -401,7 +401,7 @@ let options = {
       }
   };
         await browser.url('Required URL');
-        await smartuiSnapshot(driver, 'Screenshot Name', options);
+        await smartuiSnapshot(browser, 'Screenshot Name', options);
 ```
 </TabItem>
 
@@ -421,8 +421,8 @@ let options = {
 
 **Example:**
 ```javascript
-await smartuiSnapshot(driver, 'HomePage-Header');
-await smartuiSnapshot(driver, 'ProductPage-MainContent');
+await smartuiSnapshot(browser, 'HomePage-Header');
+await smartuiSnapshot(browser, 'ProductPage-MainContent');
 ```
 
 </TabItem>
@@ -438,7 +438,7 @@ await smartuiSnapshot(driver, 'ProductPage-MainContent');
 ```javascript
 await browser.url('https://example.com');
 await $('#main-content').waitForDisplayed({ timeout: 10000 });
-await smartuiSnapshot(driver, 'Page Loaded');
+await smartuiSnapshot(browser, 'Page Loaded');
 ```
 
 </TabItem>
