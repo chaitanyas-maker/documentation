@@ -196,7 +196,7 @@ driver = Selenium::WebDriver.for :chrome
 driver.navigate.to "https://www.pinterest.com/pin/16958936087791895/"
 
 # Take a snapshot
-LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name")
+Lambdatest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name")
 
 driver.quit
 ```
@@ -245,7 +245,7 @@ options = {
             }
         }
 driver.navigate.to 'Required URL'
-LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+Lambdatest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </TabItem>
@@ -258,7 +258,7 @@ options = {
             }
         }
 driver.navigate.to 'Required URL'
-LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+Lambdatest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </TabItem>
@@ -271,7 +271,7 @@ options = {
             }
         }
 driver.navigate.to 'Required URL'
-LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+Lambdatest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </TabItem>
@@ -285,7 +285,7 @@ options = {
             }
         }
 driver.navigate.to 'Required URL'
-LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+Lambdatest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 </TabItem>
 
@@ -301,7 +301,7 @@ options = {
             }
         }
 driver.navigate.to 'Required URL'
-LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+Lambdatest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </TabItem>
@@ -314,7 +314,7 @@ options = {
             }
         }
 driver.navigate.to 'Required URL'
-LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+Lambdatest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </TabItem>
@@ -327,7 +327,7 @@ options = {
             }
         }
 driver.navigate.to 'Required URL'
-LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+Lambdatest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </TabItem>
@@ -341,7 +341,7 @@ options = {
             }
         }
 driver.navigate.to 'Required URL'
-LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+Lambdatest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 </TabItem>
 
@@ -361,7 +361,7 @@ options = {
       }
   }
 driver.navigate.to 'Required URL'
-LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+Lambdatest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </TabItem>
@@ -374,7 +374,7 @@ options = {
       }
   }
 driver.navigate.to 'Required URL'
-LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+Lambdatest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </TabItem>
@@ -387,7 +387,7 @@ options = {
       }
   }
 driver.navigate.to 'Required URL'
-LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+Lambdatest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 
 </TabItem>
@@ -401,7 +401,7 @@ options = {
       }
   }
 driver.navigate.to 'Required URL'
-LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
+Lambdatest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name", options)
 ```
 </TabItem>
 
@@ -442,7 +442,7 @@ driver = Selenium::WebDriver.for :chrome
 begin
   driver.get("Required URL")
   quick_scroll_to_bottom(driver, 100) # Use wait time accordingly
-  LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name")
+  Lambdatest::Selenium::Driver.smartui_snapshot(driver, "Screenshot Name")
 ensure
   driver.quit
 end
@@ -463,8 +463,8 @@ end
 
 **Example:**
 ```ruby
-LambdaTest::Selenium::Driver.smartui_snapshot(driver, "HomePage-Header")
-LambdaTest::Selenium::Driver.smartui_snapshot(driver, "ProductPage-MainContent")
+Lambdatest::Selenium::Driver.smartui_snapshot(driver, "HomePage-Header")
+Lambdatest::Selenium::Driver.smartui_snapshot(driver, "ProductPage-MainContent")
 ```
 
 </TabItem>
@@ -483,7 +483,7 @@ require 'selenium-webdriver'
 driver.navigate.to 'https://example.com'
 wait = Selenium::WebDriver::Wait.new(timeout: 10)
 wait.until { driver.find_element(id: 'main-content') }
-LambdaTest::Selenium::Driver.smartui_snapshot(driver, "Page Loaded")
+Lambdatest::Selenium::Driver.smartui_snapshot(driver, "Page Loaded")
 ```
 
 </TabItem>
